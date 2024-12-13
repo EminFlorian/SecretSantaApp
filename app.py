@@ -3,7 +3,7 @@ import random
 
 app = Flask(__name__)
 
-# In-memory data to store users (temporary, can be expanded to a database later)
+# Display
 users = []
 
 @app.route('/')
@@ -22,13 +22,13 @@ def generate_secret_santa():
     if len(users) < 2:
         return "Need at least 2 participants to generate Secret Santa pairs."
     
-    # Shuffle users to randomize the pairing
+    # Usr Shuffle
     random.shuffle(users)
     
-    # Create pairs
+    # Shuffle Pairs
     pairs = {users[i]: users[(i + 1) % len(users)] for i in range(len(users))}
     
-    # For now, just display the pairs on the webpage
+    # Display
     return render_template('pairs.html', pairs=pairs)
 
 if __name__ == '__main__':
